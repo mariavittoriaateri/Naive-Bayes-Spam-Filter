@@ -1,17 +1,75 @@
-# Naive-Bayes-Spam-Filter
-Naive Bayes spam filter in Python (final project of the basic programming course for Computational Linguistics).
+# Naive Bayes Spam Filter
 
-The module **corpus.py** includes:
-- a *tokenize(text)* function which accepts as input a string (text) and returns a list of tokens;
-- a *read_file(path)* function which accepts as input a string (path), opens the file at the specified path, and returns the file contents as a list of tokens. Each file starts with a line corresponding to the subject of the e-mail, which is discarded here;
-- a *read_dataset(path)* function whcih accepts as input a string (path) which points to a dataset containing two directories, ham and spam. The function discovers all e-mail files contained in the two directories and read their contents via *read_file*. Every e-mail has to be combined into a tuble with its respective label ("ham" or "spam") to form a training instance, e.g. (["buy", "cheap", "medications"], "spam"). The function returns a list of training instances.
+A Naive Bayes spam filter implemented in Python. This project was developed as the final assignment for the basic programming course in Computational Linguistics.
 
-The module **nb.py** contains a class *SpamFilter*, which deals only with token sequences provided by corpus.py. The class has the two following methods:
-- *train(self, emails)* trains the spam filter by learning the statistics of emails, where emails is a list of training instances returned by *read_dataset*;
-- *classify(self, email)* classifies email (a list of tokens representing the contents of an e-mail) into spam or ham. The return value is a tuple consisting of both the spam score and the spam classification result for the email ("spam" or "ham").
+---
 
-The module **main.py** is responsible for user interaction - by invoking main.py, all functionality is exposed.
+## Overview
 
-The whole program allows the user to train a spam filter from a dataset of e-mails, classify an e-mail as spam or ham, and batch-classify an entire dataset of e-mails.
+The project consists of three main modules:  
+1. **`corpus.py`**  
+2. **`nb.py`**  
+3. **`main.py`**
 
-***NOTE***: the dataset used contains two directories, ham and spam. Each e-mail file is named as numericID.ham or numericID.spam respectively.
+---
+
+## Module Descriptions
+
+### 1. `corpus.py`
+
+This module handles data preprocessing and provides the following functions:
+
+- **`tokenize(text)`**  
+  Accepts a string (`text`) as input and returns a list of tokens.
+
+- **`read_file(path)`**  
+  - Accepts a string (`path`) as input.  
+  - Opens the file at the specified path and returns the file's contents as a list of tokens.  
+  - Discards the first line of the file (the email subject).
+
+- **`read_dataset(path)`**  
+  - Accepts a string (`path`) pointing to a dataset containing two directories: `ham` and `spam`.  
+  - Reads all email files in these directories using `read_file`.  
+  - Combines the email content into a tuple with its respective label (`"ham"` or `"spam"`).  
+    Example: `(["buy", "cheap", "medications"], "spam")`.  
+  - Returns a list of such training instances.
+
+---
+
+### 2. `nb.py`
+
+This module contains the **`SpamFilter`** class, which manages spam filtering using token sequences processed by `corpus.py`.
+
+**Methods:**
+
+- **`train(self, emails)`**  
+  Trains the spam filter by analyzing email statistics.  
+  - **`emails`**: A list of training instances returned by `read_dataset`.
+
+- **`classify(self, email)`**  
+  Classifies an email (represented as a list of tokens) into `"spam"` or `"ham"`.  
+  - **Returns**:  
+    1. The spam score.  
+    2. The classification result (`"spam"` or `"ham"`).
+
+---
+
+### 3. `main.py`
+
+This module handles user interaction and serves as the entry point for the program.  
+By running `main.py`, all functionality is exposed to the user.
+
+---
+
+## Program Features
+
+1. Train a spam filter using a dataset of emails.  
+2. Classify a single email as `"spam"` or `"ham"`.  
+3. Batch classify an entire dataset of emails.
+
+---
+
+## Notes
+
+- The original dataset used for this project (no longer available) contains two directories: `ham` and `spam`.  
+  Each email file is named using the format `numericID.ham` or `numericID.spam`.
