@@ -73,3 +73,4 @@ By running `main.py`, all functionality is exposed to the user.
 
 - The original dataset used for this project (no longer available) contains two directories: `ham` and `spam`.  
   Each email file is named using the format `numericID.ham` or `numericID.spam`.
+  Only a small subset of data from the ham directory are still available and can be found in `Subset_dataset_ham`.
